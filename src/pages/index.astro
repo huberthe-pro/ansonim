@@ -8,11 +8,11 @@ import Footer from "@/src/components/Footer.astro";
 import Skills from "@/src/components/Skills.astro";
 
 const nav = [
-  { path: `/`, text: "About" },
-  { path: `/blog`, text: "Blog" },
-  { path: `#experience`, text: "Experience" },
-  { path: `#projects`, text: "Projects" },
-  { path: `#contact`, text: "Contact" },
+  { path: `/`, text: "home" },
+  { path: `/blog`, text: "blog" },
+  { path: `#experience`, text: "experience" },
+  { path: `#projects`, text: "projects" },
+  { path: `#contact`, text: "contact" },
 ];
 
 const heroProps = {
@@ -103,14 +103,14 @@ const experienceData = {
 
 const footerContent = {
   id: "contact",
-  status: "Available for freelance",
-  email_label: "Email",
+  status: "[online] available for freelance",
+  email_label: "email:",
   email_url: "mailto:hi@anson.im",
-  github_label: "GitHub",
+  github_label: "github",
   github_url: "https://github.com/anson-im",
-  x_label: "X",
+  x_label: "twitter",
   x_url: "https://x.com/anson_im",
-  linkedin_label: "Linkedin",
+  linkedin_label: "linkedin",
   linkedin_url: "https://linkedin.com/in/anson-im",
 };
 
@@ -165,12 +165,13 @@ const skills = [
   title="Anson - Full Stack Engineer"
   description="Full Stack Engineer building performant web applications and developer tools."
 >
+  <div class="scanlines"></div>
   <Header nav={nav} locales={["en"]} currentLocale="en" />
 
-  <main>
+  <main class="min-h-screen">
     <Hero {...heroProps} />
-    <Projects {...projectsProps} />
     <Experience {...experienceData} />
+    <Projects {...projectsProps} />
     <Skills heading={{value: "Skills"}} content={skills} />
   </main>
 

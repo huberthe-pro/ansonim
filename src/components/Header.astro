@@ -13,8 +13,7 @@ const { nav } = Astro.props as Props;
 
 <header class="py-8 flex items-center justify-center flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40 border-b border-dashed border-green-900/30">
   <div class="flex items-center gap-6 text-sm">
-    <span class="text-green-500/60">./</span>
-    {nav.map((item) => (
+    {nav.map((item, index) => (
       <>
         <a
           class="text-green-500/70 hover:text-cyan-500 hover:underline transition-all text-xs md:text-sm"
@@ -22,7 +21,7 @@ const { nav } = Astro.props as Props;
         >
           {item.text}
         </a>
-        <span class="text-green-500/30">/</span>
+        {index < nav.length - 1 && <span class="text-green-500/30">/</span>}
       </>
     ))}
   </div>

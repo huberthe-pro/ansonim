@@ -1,7 +1,4 @@
 ---
-import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
-import Arrow from "@lucide/astro/icons/corner-right-up";
-
 type Item = {
     nameKey: string;
     descriptionKey: string;
@@ -16,44 +13,63 @@ interface Props {
 }
 
 const { title, projects } = Astro.props as Props;
+const sectionId = title.value.toLowerCase();
 ---
 
-<section id={title.value.toLowerCase()} class="scroll-mt-50">
-    <I18NDebug key={title.key}>
-        <h2 class="opacity-50 uppercase mb-6">{title.value}</h2>
-    </I18NDebug>
+<section id={sectionId} class="scroll-mt-50 py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-green-500 text-xl font-mono mb-8 flex items-center gap-3">
+        <span>[</span>
+        <span>{title.value.toUpperCase()}</span>
+        <span>]</span>
+      </h2>
 
-    <ul class="space-y-3">
-        {
-            projects.map((project) => (
-                <li class="group">
-                    <I18NDebug key={project.nameKey}>
-                        {project.link ? (
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                name={project.name}
-                                class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500 "
-                            >
-                                {project.name}
-                            </a>
-                        ) : (
-                            <span
-                                class="mb-5 font-semibold transition-all duration-200 group-hover:text-green-500 "
-                            >
-                                {project.name}
-                            </span>
-                        )}
-                        <Arrow class="h-3 w-3 inline transition-all text-green-500  duration-200 invisible opacity-0 group-hover:visible group-hover:opacity-100" />
-                    </I18NDebug>
-                    <I18NDebug key={project.descriptionKey}>
-                        <p class="opacity-50 text-[0.88rem]">
-                            {project.description}
-                        </p>
-                    </I18NDebug>
-                </li>
+      <div class="border border-dashed border-green-900/30 bg-secondary/20 p-6">
+        <div class="text-green-500/40 text-xs font-mono mb-4">
+          // Total projects: {projects.length}
+        </div>
+
+        <ul class="space-y-4 font-mono text-sm">
+          {
+            projects.map((project, index) => (
+              <li class="group border-l-2 border-green-900/30 pl-4 hover:border-cyan-500 hover:bg-secondary/40 transition-all">
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block"
+                  >
+                    <div class="flex items-start gap-3">
+                      <span class="text-green-500/50">[{String(index + 1).padStart(2, '0')}]</span>
+                      <div class="flex-1">
+                        <div class="text-green-500 group-hover:text-cyan-500 transition-colors mb-1">
+                          {project.name}
+                        </div>
+                        <div class="text-green-500/60 text-xs">
+                          {project.description}
+                        </div>
+                      </div>
+                      <span class="text-green-500/30 group-hover:text-cyan-500">→</span>
+                    </div>
+                  </a>
+                ) : (
+                  <div class="flex items-start gap-3">
+                    <span class="text-green-500/50">[{String(index + 1).padStart(2, '0')}]</span>
+                    <div class="flex-1">
+                      <div class="text-green-500 mb-1">
+                        {project.name}
+                      </div>
+                      <div class="text-green-500/60 text-xs">
+                        {project.description}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
             ))
-        }
-    </ul>
+          }
+        </ul>
+      </div>
+    </div>
 </section>

@@ -8,8 +8,8 @@ const allPosts = await getCollection("blog");
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const nav = [
-  { path: `/`, text: "../home" },
-  { path: `#contact`, text: "./contact" },
+  { path: `/`, text: "home" },
+  { path: `#contact`, text: "contact" },
 ];
 
 const footerContent = {

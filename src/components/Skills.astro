@@ -1,6 +1,4 @@
 ---
-import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
-
 type Option = { key: string; value: string | number };
 
 interface Content {
@@ -19,39 +17,50 @@ interface Props {
 const { heading, content } = Astro.props as Props;
 ---
 
-<section class="mt-20">
-    <I18NDebug key={heading.key}>
-        <h2 class="opacity-50 uppercase mb-6">{heading.value}</h2>
-    </I18NDebug>
-    <div class="grid grid-cols-1 md:grid-cols-3">
-        {
-            content.map((skill) => (
-                <article class="border p-3 flex flex-col justify-between">
-                    <I18NDebug key={skill.title.key}>
-                        <p class="pb-1 text-green-500">
-                            {">"}
-                            {skill.title.value}
-                        </p>
-                    </I18NDebug>
+<section class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-green-500 text-xl font-mono mb-8 flex items-center gap-3">
+        <span>[</span>
+        <span>{heading.value.toUpperCase()}</span>
+        <span>]</span>
+      </h2>
 
-                    <I18NDebug key={skill.category.key}>
-                        <span class="text-[0.7rem] p-1  text-white/70 uppercase">{skill.category.value}</span>
-                    </I18NDebug>
+      <div class="border border-dashed border-green-900/30 bg-secondary/20 p-6 font-mono text-sm">
+        <div class="text-green-500/40 text-xs mb-4">
+          // Loaded modules: {content.length}
+        </div>
 
-                    <I18NDebug key={skill.description.key}>
-                        <p class="text-[0.88rem] opacity-50 py-2 border-b line-clamp-2">{skill.description.value}</p>
-                    </I18NDebug>
+        <div class="space-y-3">
+          {content.map((skill, index) => (
+            <div class="border-b border-green-900/20 pb-3 last:border-0 last:pb-0">
+              <div class="flex items-center gap-4 text-xs">
+                <span class="text-green-500/50 w-6">
+                  [{String(index + 1).padStart(2, '0')}]
+                </span>
+                <span class="text-cyan-500 flex-1">
+                  {skill.title.value}
+                </span>
+                <span class="text-green-500/60 px-2 py-0.5 bg-green-950/30">
+                  {skill.category.value}
+                </span>
+              </div>
+              <div class="ml-10 mt-1">
+                <div class="text-green-500/50 text-xs mb-1">
+                  └─ {skill.description.value}
+                </div>
+                <div class="text-green-500/40 text-xs">
+                  └─ Level: {skill.experience_years.value} {skill.experience_label.value}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                    <div class="flex gap-2 items-center pt-2">
-                        <I18NDebug key={skill.experience_years.key}>
-                            <p class="text-3xl">{skill.experience_years.value}</p>
-                        </I18NDebug>
-                        <I18NDebug key={skill.experience_label.key}>
-                            <p class="text-[0.88rem] opacity-50">{skill.experience_label.value}</p>
-                        </I18NDebug>
-                    </div>
-                </article>
-            ))
-        }
+        <div class="mt-4 text-green-500/30 text-xs">
+          ┌─────────────────────────────────┐
+          │ All systems operational.         │
+          └─────────────────────────────────┘
+        </div>
+      </div>
     </div>
 </section>

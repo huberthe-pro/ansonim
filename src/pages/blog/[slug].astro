@@ -17,9 +17,9 @@ const { Content } = await post.render();
 const locale = post.data.lang;
 
 const nav = [
-  { path: `/`, text: "../home" },
-  { path: `/blog`, text: "../blog" },
-  { path: `#contact`, text: "./contact" },
+  { path: `/`, text: "home" },
+  { path: `/blog`, text: "blog" },
+  { path: `#contact`, text: "contact" },
 ];
 
 const footerContent = {
@@ -46,7 +46,7 @@ const footerContent = {
 
   <article class="container mx-auto px-4 py-20 max-w-4xl font-mono">
     <a href="/blog" class="inline-flex items-center text-green-500 hover:text-cyan-500 hover:underline mb-8 text-sm">
-      <span class="mr-2">←</span>../blog
+      <span class="mr-2">←</span>back to blog
     </a>
 
     <header class="mb-12">

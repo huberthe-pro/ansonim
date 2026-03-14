@@ -1,34 +1,63 @@
 ---
-import I18NDebug from "@ariaskit/astro-i18n/I18NDebug.astro";
 export type KT = { key: string; value: string };
 
 interface Props {
     name: string;
-    title: KT;
-    p1: KT;
-    p2: KT;
-    p3: KT;
+    title: string;
+    p1: string;
+    p2: string;
+    p3: string;
 }
 
 const { name, title, p1, p2, p3 } = Astro.props as Props;
 ---
 
-<section id={name} class="mb-10 mt-50">
-    <h1 class="mb-4 font-semibold text-xl">{name}</h1>
-    <div class="[&_p]:mb-6 leading-7">
-        <p>
-            <I18NDebug key={title.key}>
-                <span class="text-green-500">{title.value} </span>
-            </I18NDebug>
-            <I18NDebug key={p1.key}>
-                <span class="opacity-50">{p1.value}</span>
-            </I18NDebug>
-        </p>
-        <I18NDebug key={p2.key}>
-            <p class="opacity-50">{p2.value}</p>
-        </I18NDebug>
-        <I18NDebug key={p3.key}>
-            <p class="opacity-50">{p3.value}</p>
-        </I18NDebug>
+<section class="min-h-screen flex items-center justify-center pt-20">
+  <div class="max-w-3xl w-full px-4">
+    <div class="border border-dashed border-green-900/50 bg-secondary/20 p-6 mb-6">
+      <div class="text-green-500/40 text-xs mb-4 font-mono">
+        ┌───────────────────────────────────────────────────────────┐
+        │  WELCOME TO ANSON'S TERMINAL                              │
+        │  System ready. Uptime: 99.9%                             │
+        └───────────────────────────────────────────────────────────┘
+      </div>
+
+      <div class="font-mono">
+        <div class="text-green-500/60 text-sm mb-6">
+          <span class="text-green-500">root@anson:~$</span> <span class="terminal-cursor">whoami</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl text-green-500 mb-6 font-mono tracking-tight">
+          {name}
+        </h1>
+
+        <div class="text-2xl md:text-3xl text-cyan-500 mb-8 font-mono">
+          {title}
+        </div>
+
+        <div class="space-y-4 text-green-500/70 font-mono text-sm md:text-base">
+          <p class="flex items-start gap-3">
+            <span class="text-amber-500 mt-1">→</span>
+            <span>{p1}</span>
+          </p>
+          <p class="flex items-start gap-3">
+            <span class="text-amber-500 mt-1">→</span>
+            <span>{p2}</span>
+          </p>
+          <p class="flex items-start gap-3">
+            <span class="text-amber-500 mt-1">→</span>
+            <span>{p3}</span>
+          </p>
+        </div>
+
+        <div class="mt-8 text-green-500/40 text-xs font-mono">
+          <span class="text-green-500">root@anson:~$</span> <span class="terminal-cursor">_</span>
+        </div>
+      </div>
     </div>
+
+    <div class="text-center text-green-500/30 text-xs font-mono">
+      Press ENTER or scroll to continue ↓
+    </div>
+  </div>
 </section>

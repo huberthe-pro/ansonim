@@ -1,0 +1,89 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Footer from "@/src/components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const nav = [
+  { path: `/`, text: "About" },
+  { path: `/en/blog`, text: "Blog" },
+  { path: `#experience`, text: "Experience" },
+  { path: `#projects`, text: "Projects" },
+  { path: `#contact`, text: "Contact" },
+];
+
+const footerContent = {
+  id: "contact",
+  status: "Available for freelance",
+  email_label: "Email",
+  email_url: "mailto:hi@anson.im",
+  github_label: "GitHub",
+  github_url: "https://github.com/anson-im",
+  x_label: "X",
+  x_url: "https://x.com/anson_im",
+  linkedin_label: "Linkedin",
+  linkedin_url: "https://linkedin.com/in/anson-im",
+};
+---
+
+<Layout
+  locale="en"
+  title="Blog - Anson"
+  description="Blog posts about web development, performance, and more."
+  alternateLinks={[
+    { href: "/en", hreflang: "en" },
+    { href: "/zh", hreflang: "zh" },
+  ]}
+>
+  <Header nav={nav} locales={["en", "zh"]} currentLocale="en" />
+
+  <main class="container mx-auto px-4 py-16 max-w-4xl">
+    <h1 class="text-4xl font-bold mb-8">Blog</h1>
+
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <article class="border-b border-gray-200 dark:border-gray-800 pb-8">
+          <a href={`/blog/${post.slug}`} class="block group">
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
+              <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-xs uppercase">
+                {post.data.lang === "en" ? "EN" : "中文"}
+              </span>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString(post.data.lang === "en" ? "en-US" : "zh-CN", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              {post.data.tags.length > 0 && (
+                <>
+                  <span>·</span>
+                  <div class="flex gap-2">
+                    {post.data.tags.map(tag => (
+                      <span class="text-green-600 dark:text-green-400">#{tag}</span>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            <h2 class="text-2xl font-semibold group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+              {post.data.title}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">
+              {post.data.description}
+            </p>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <p class="text-gray-600 dark:text-gray-400">No posts yet.</p>
+    )}
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>

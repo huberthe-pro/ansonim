@@ -2,6 +2,7 @@
   "description": "全栈工程师，专注于构建高性能 Web 应用和开发者工具",
   "nav": {
     "about": "关于",
+    "blog": "博客",
     "projects": "项目",
     "experience": "经历",
     "contact": "联系"

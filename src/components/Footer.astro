@@ -2,57 +2,87 @@
 type Option = { key:string; value:string }
 
 interface Props {
-    status: Option 
+    status: string | Option;
     id:string;
-    email_label?: Option ;
-    email_url?: Option ;
-    github_label?: Option ;
-    github_url?: Option ;
-    x_label?: Option ;
-    x_url?: Option ;
-    linkedin_label?: Option ;
-    linkedin_url?: Option;
+    email_label?: string | Option;
+    email_url?: string | Option;
+    github_label?: string | Option;
+    github_url?: string | Option;
+    x_label?: string | Option;
+    x_url?: string | Option;
+    linkedin_label?: string | Option;
+    linkedin_url?: string | Option;
 }
 
 const { status, email_label, email_url, github_label, github_url, x_label, x_url, linkedin_label, linkedin_url, id } = Astro.props as Props
+
+const statusValue = typeof status === 'string' ? status : status.value;
+const emailUrlValue = typeof email_url === 'string' ? email_url : email_url?.value;
+const emailLabelValue = typeof email_label === 'string' ? email_label : email_label?.value;
+const githubUrlValue = typeof github_url === 'string' ? github_url : github_url?.value;
+const githubLabelValue = typeof github_label === 'string' ? github_label : github_label?.value;
+const xUrlValue = typeof x_url === 'string' ? x_url : x_url?.value;
+const xLabelValue = typeof x_label === 'string' ? x_label : x_label?.value;
+const linkedinUrlValue = typeof linkedin_url === 'string' ? linkedin_url : linkedin_url?.value;
+const linkedinLabelValue = typeof linkedin_label === 'string' ? linkedin_label : linkedin_label?.value;
 ---
 
 <footer
     id={id}
-    class="my-24 border-t pt-8 text-sm grid grid-cols-1 gap-3 place-items-center"
+    class="my-24 border-t border-dashed border-green-900/30 pt-8 text-xs font-mono"
 >
-    <div>
-        <span
-            class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"
-        ></span>
-        <span class="opacity-70 uppercase">{status.value}</span>
-        <span
-            class="inline-block w-2 h-2 rounded-full bg-green-500 ml-2 animate-pulse"
-        ></span>
-    </div>
-    <div class="flex gap-4 [&_a]:opacity-70 [&_a]:hover:opacity-100 [&_a]:transition-colors [&_a]:duration-200">
-        {email_url && email_label && (
-            <a href={email_url.value}>
-                {email_label.value}
-            </a>
-        )}
-        
-        {github_url && github_label && (
-            <a href={github_url.value} rel="nofollow" >
-                {github_label.value}
-            </a>
-        )}
+    <div class="max-w-2xl mx-auto space-y-4">
+        <div class="text-green-500/60">
+            <span class="inline-block w-2 h-2 bg-green-500 mr-2 animate-pulse"></span>
+            {statusValue}
+            <span class="inline-block w-2 h-2 bg-green-500 ml-2 animate-pulse"></span>
+        </div>
 
-        {x_url && x_label && (
-            <a href={x_url.value} rel="nofollow" >
-                {x_label.value}
-            </a>
-        )}
+        <div class="border border-dashed border-green-900/30 bg-secondary/20 p-4">
+            <div class="text-green-500/40 mb-2">[CONTACT LINKS]</div>
+            <div class="space-y-1">
+                {emailUrlValue && emailLabelValue && (
+                    <div class="flex gap-2">
+                        <span class="text-green-500/60">EMAIL:</span>
+                        <a href={emailUrlValue} class="text-cyan-500 hover:text-green-500 hover:underline">
+                            {emailLabelValue}
+                        </a>
+                    </div>
+                )}
 
-        {linkedin_url && linkedin_label && (
-            <a href={linkedin_url.value} rel="nofollow">
-                {linkedin_label.value}
-            </a>
-        )}
+                {githubUrlValue && githubLabelValue && (
+                    <div class="flex gap-2">
+                        <span class="text-green-500/60">GITHUB:</span>
+                        <a href={githubUrlValue} rel="nofollow" class="text-cyan-500 hover:text-green-500 hover:underline">
+                            {githubLabelValue}
+                        </a>
+                    </div>
+                )}
+
+                {xUrlValue && xLabelValue && (
+                    <div class="flex gap-2">
+                        <span class="text-green-500/60">TWITTER:</span>
+                        <a href={xUrlValue} rel="nofollow" class="text-cyan-500 hover:text-green-500 hover:underline">
+                            {xLabelValue}
+                        </a>
+                    </div>
+                )}
+
+                {linkedinUrlValue && linkedinLabelValue && (
+                    <div class="flex gap-2">
+                        <span class="text-green-500/60">LINKEDIN:</span>
+                        <a href={linkedinUrlValue} rel="nofollow" class="text-cyan-500 hover:text-green-500 hover:underline">
+                            {linkedinLabelValue}
+                        </a>
+                    </div>
+                )}
+            </div>
+        </div>
+
+        <pre class="text-green-500/30 text-center">
+────────────────────────────────────
+© 2025 anson.im | v1.0.0 | build: {new Date().toISOString().slice(0, 10)}
+────────────────────────────────────
+        </pre>
     </div>
 </footer>

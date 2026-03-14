@@ -17,23 +17,21 @@ const { Content } = await post.render();
 const locale = post.data.lang;
 
 const nav = [
-  { path: `/`, text: locale === "en" ? "About" : "关于" },
-  { path: `/blog`, text: locale === "en" ? "Blog" : "博客" },
-  { path: `#experience`, text: locale === "en" ? "Experience" : "经历" },
-  { path: `#projects`, text: locale === "en" ? "Projects" : "项目" },
-  { path: `#contact`, text: locale === "en" ? "Contact" : "联系" },
+  { path: `/`, text: "../home" },
+  { path: `/blog`, text: "../blog" },
+  { path: `#contact`, text: "./contact" },
 ];
 
 const footerContent = {
   id: "contact",
-  status: locale === "en" ? "Available for freelance" : "接受兼职",
-  email_label: locale === "en" ? "Email" : "邮箱",
+  status: "[online] available for freelance",
+  email_label: "email:",
   email_url: "mailto:hi@anson.im",
-  github_label: "GitHub",
+  github_label: "github",
   github_url: "https://github.com/anson-im",
-  x_label: "X",
+  x_label: "twitter",
   x_url: "https://x.com/anson_im",
-  linkedin_label: locale === "en" ? "Linkedin" : "领英",
+  linkedin_label: "linkedin",
   linkedin_url: "https://linkedin.com/in/anson-im",
 };
 ---
@@ -42,53 +40,75 @@ const footerContent = {
   locale={locale}
   title={post.data.title}
   description={post.data.description}
-  alternateLinks={[
-    { href: "/en", hreflang: "en" },
-    { href: "/zh", hreflang: "zh" },
-  ]}
 >
-  <Header nav={nav} locales={["en", "zh"]} currentLocale={locale} />
+  <div class="scanlines"></div>
+  <Header nav={nav} locales={["en"]} currentLocale="en" />
 
-  <article class="container mx-auto px-4 py-16 max-w-3xl">
-    <a href="/blog" class="inline-flex items-center text-green-600 dark:text-green-400 hover:underline mb-8">
-      ← {locale === "en" ? "Back to Blog" : "返回博客"}
+  <article class="container mx-auto px-4 py-20 max-w-4xl font-mono">
+    <a href="/blog" class="inline-flex items-center text-green-500 hover:text-cyan-500 hover:underline mb-8 text-sm">
+      <span class="mr-2">←</span>../blog
     </a>
 
-    <header class="mb-8">
-      <span class="inline-block px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded text-sm mb-4 uppercase">
-        {locale === "en" ? "EN" : "中文"}
-      </span>
-      <h1 class="text-4xl font-bold mb-4">{post.data.title}</h1>
-      <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {post.data.pubDate.toLocaleDateString(locale === "en" ? "en-US" : "zh-CN", {
+    <header class="mb-12">
+      <div class="border border-dashed border-green-900/50 bg-secondary/30 p-6">
+        <div class="flex items-center gap-3 text-sm text-green-500/60 mb-4 font-mono">
+          <span>┌─ FILE:</span>
+          <span class="text-cyan-500">{post.slug}.md</span>
+          <span class="text-green-500">┘</span>
+        </div>
+
+        <h1 class="text-2xl font-mono text-green-500 mb-4">
+          {post.data.title}
+        </h1>
+
+        <div class="flex items-center gap-6 text-sm text-green-500/60 font-mono">
+          <span>created: {post.data.pubDate.toLocaleDateString("en-US", {
             year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        {post.data.updatedDate && (
-          <>
-            <span>·</span>
-            <time datetime={post.data.updatedDate.toISOString()}>
-              {locale === "en" ? "Updated" : "更新"} {post.data.updatedDate.toLocaleDateString(locale === "en" ? "en-US" : "zh-CN")}
-            </time>
-          </>
+            month: "short",
+            day: "2-digit"
+          })}</span>
+          {post.data.updatedDate && (
+            <span>modified: {post.data.updatedDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "2-digit"
+            })}</span>
+          )}
+          <span class="px-2 py-0.5 bg-green-950/50">
+            {locale === "en" ? "[EN]" : "[ZH]"}
+          </span>
+        </div>
+
+        {post.data.tags.length > 0 && (
+          <div class="flex gap-2 mt-4 text-xs">
+            {post.data.tags.map(tag => (
+              <span class="px-2 py-0.5 bg-green-950/30 text-green-500/70 font-mono">
+                #{tag}
+              </span>
+            ))}
+          </div>
         )}
       </div>
-      {post.data.tags.length > 0 && (
-        <div class="flex gap-2 mt-4">
-          {post.data.tags.map(tag => (
-            <span class="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-full text-sm">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      )}
+
+      <div class="text-green-500/40 text-xs mt-2 font-mono">
+        ▼ SCROLL TO READ ▼
+      </div>
     </header>
 
-    <div class="prose dark:prose-invert max-w-none">
+    <div class="prose">
       <Content />
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-dashed border-green-900/30">
+      <pre class="text-green-500/50 text-xs">
+────────────────────────────────────────────────────────────
+  [END OF FILE]
+
+  <a href="/blog" class="text-cyan-500 hover:text-green-500">./blog</a>  <a href="/" class="text-cyan-500 hover:text-green-500">./home</a>
+
+  Press ESC to return home.
+────────────────────────────────────────────────────────────
+      </pre>
     </div>
   </article>
 

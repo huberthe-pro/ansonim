@@ -11,16 +11,20 @@ interface Props {
 const { nav } = Astro.props as Props;
 ---
 
-<header class="py-15 flex items-center justify-center flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40">
-  <div class="flex items-center gap-5 order-2 md:order-1">
+<header class="py-8 flex items-center justify-center flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40 border-b border-dashed border-green-900/30">
+  <div class="flex items-center gap-6 text-sm">
+    <span class="text-green-500/60">./</span>
     {nav.map((item) => (
-      <a
-        class="opacity-50 transition-all duration-200 hover:opacity-100 text-[1rem] md:text-[0.85rem]"
-        href={item.path}
-      >
-        {item.text}
-      </a>
+      <>
+        <a
+          class="text-green-500/70 hover:text-cyan-500 hover:underline transition-all text-xs md:text-sm"
+          href={item.path}
+        >
+          {item.text}
+        </a>
+        <span class="text-green-500/30">/</span>
+      </>
     ))}
   </div>
-  <div class="absolute -bottom-10 left-0 w-full h-18 pointer-events-none bg-linear-to-b from-background via-background/80 to-background/20 z-10"></div>
+  <div class="absolute -bottom-6 left-0 w-full h-6 pointer-events-none bg-linear-to-b from-background via-background/90 to-transparent"></div>
 </header>

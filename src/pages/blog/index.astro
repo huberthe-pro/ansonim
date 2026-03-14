@@ -8,81 +8,103 @@ const allPosts = await getCollection("blog");
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const nav = [
-  { path: `/`, text: "About" },
-  { path: `/en/blog`, text: "Blog" },
-  { path: `#experience`, text: "Experience" },
-  { path: `#projects`, text: "Projects" },
-  { path: `#contact`, text: "Contact" },
+  { path: `/`, text: "../home" },
+  { path: `#contact`, text: "./contact" },
 ];
 
 const footerContent = {
   id: "contact",
-  status: "Available for freelance",
-  email_label: "Email",
+  status: "[online] available for freelance",
+  email_label: "email:",
   email_url: "mailto:hi@anson.im",
-  github_label: "GitHub",
+  github_label: "github",
   github_url: "https://github.com/anson-im",
-  x_label: "X",
+  x_label: "twitter",
   x_url: "https://x.com/anson_im",
-  linkedin_label: "Linkedin",
+  linkedin_label: "linkedin",
   linkedin_url: "https://linkedin.com/in/anson-im",
 };
 ---
 
 <Layout
   locale="en"
-  title="Blog - Anson"
-  description="Blog posts about web development, performance, and more."
-  alternateLinks={[
-    { href: "/en", hreflang: "en" },
-    { href: "/zh", hreflang: "zh" },
-  ]}
+  title="./blog - Anson"
+  description="Developer terminal - blog posts"
 >
-  <Header nav={nav} locales={["en", "zh"]} currentLocale="en" />
+  <div class="scanlines"></div>
+  <Header nav={nav} locales={["en"]} currentLocale="en" />
 
-  <main class="container mx-auto px-4 py-16 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Blog</h1>
+  <main class="container mx-auto px-4 py-20 max-w-4xl font-mono">
+    <div class="mb-8">
+      <pre class="text-green-500 text-sm mb-4">
+┌─────────────────────────────────────────────────────────────┐
+│  ███╗   ██╗████████╗███████╗██████╗ ███╗   ███╗███████╗    │
+│  ████╗  ██║╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔════╝    │
+│  ██╔██╗ ██║   ██║   █████╗  ██████╔╝██╔████╔██║█████╗      │
+│  ██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝      │
+│  ██║ ╚████║   ██║   ███████╗██║  ██║██║ ╚═╝ ██║███████╗    │
+│  ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝    │
+└─────────────────────────────────────────────────────────────┘
+      </pre>
+      <p class="terminal-cursor text-green-500">./blog/list --all</p>
+    </div>
 
-    <div class="space-y-8">
-      {posts.map((post) => (
-        <article class="border-b border-gray-200 dark:border-gray-800 pb-8">
-          <a href={`/blog/${post.slug}`} class="block group">
-            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
-              <span class="px-2 py-0.5 bg-gray-200 dark:bg-gray-800 rounded text-xs uppercase">
-                {post.data.lang === "en" ? "EN" : "中文"}
-              </span>
-              <time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toLocaleDateString(post.data.lang === "en" ? "en-US" : "zh-CN", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-              {post.data.tags.length > 0 && (
-                <>
-                  <span>·</span>
-                  <div class="flex gap-2">
+    <div class="space-y-6">
+      <div class="text-amber-500 mb-4">// Found {posts.length} entries:</div>
+
+      {posts.map((post, index) => (
+        <article class="border border-green-900/50 bg-secondary/30 p-4 hover:border-green-500/50 transition-colors">
+          <div class="flex items-start gap-4">
+            <span class="text-green-500/70 text-sm font-mono">
+              [{String(index + 1).padStart(2, '0')}]
+            </span>
+            <div class="flex-1">
+              <a href={`/blog/${post.slug}`} class="block group">
+                <div class="flex items-center gap-3 text-sm text-green-500/60 mb-2 font-mono">
+                  <span>┌─ {post.data.pubDate.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "2-digit"
+                  })}</span>
+                  {post.data.lang === "zh" && <span class="text-amber-500">[ZH]</span>}
+                  {post.data.lang === "en" && <span class="text-cyan-500">[EN]</span>}
+                  <span class="text-green-500">┘</span>
+                </div>
+                <h2 class="text-lg font-mono text-green-500 group-hover:text-cyan-500 group-hover:underline transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-green-500/60 text-sm mt-2 font-mono">
+                  {post.data.description}
+                </p>
+                {post.data.tags.length > 0 && (
+                  <div class="flex gap-2 mt-3 text-xs">
                     {post.data.tags.map(tag => (
-                      <span class="text-green-600 dark:text-green-400">#{tag}</span>
+                      <span class="px-2 py-0.5 bg-green-950/50 text-green-500 font-mono">
+                        #{tag}
+                      </span>
                     ))}
                   </div>
-                </>
-              )}
+                )}
+              </a>
             </div>
-            <h2 class="text-2xl font-semibold group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-              {post.data.title}
-            </h2>
-            <p class="text-gray-600 dark:text-gray-400 mt-2">
-              {post.data.description}
-            </p>
-          </a>
+          </div>
         </article>
       ))}
     </div>
 
     {posts.length === 0 && (
-      <p class="text-gray-600 dark:text-gray-400">No posts yet.</p>
+      <div class="text-green-500/60 font-mono">
+        <p class="terminal-cursor">./blog: No entries found.</p>
+      </div>
     )}
+
+    <div class="mt-12 pt-8 border-t border-dashed border-green-900/30">
+      <pre class="text-green-500/50 text-xs">
+────────────────────────────────────────────────────────────
+  End of list. Press [HOME] to return.
+────────────────────────────────────────────────────────────
+      </pre>
+    </div>
   </main>
 
   <Footer {...footerContent} />

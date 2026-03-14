@@ -1,7 +1,5 @@
 ---
 import Layout from "@/src/layouts/Layout.astro";
-import { useI18n } from "@ariaskit/astro-i18n";
-import { type LocaleSchema } from "@/src/types";
 import Header from "@/src/components/Header.astro";
 import Hero from "@/src/components/Hero.astro";
 import Projects from "@/src/components/Projects.astro";
@@ -9,276 +7,171 @@ import Experience from "@/src/components/Experience.astro";
 import Footer from "@/src/components/Footer.astro";
 import Skills from "@/src/components/Skills.astro";
 
-const { t } = useI18n<LocaleSchema>({
-  ssg: {
-    astro: Astro,
-  },
-  locale: "en",
-});
-
 const nav = [
-  { path: `/`, text: t("nav.about") },
-  { path: `/blog`, text: t("nav.blog") },
-  { path: `#${t("nav.experience")}`, text: t("nav.experience") },
-  { path: `#${t("nav.projects")}`, text: t("nav.projects") },
-  { path: `#${t("nav.contact")}`, text: t("nav.contact") },
+  { path: `/`, text: "About" },
+  { path: `/blog`, text: "Blog" },
+  { path: `#experience`, text: "Experience" },
+  { path: `#projects`, text: "Projects" },
+  { path: `#contact`, text: "Contact" },
 ];
 
 const heroProps = {
   name: "Anson",
-  title: { key: "hero.title", value: t("hero.title") },
-  p1: { key: "hero.p1", value: t("hero.p1") },
-  p2: { key: "hero.p2", value: t("hero.p2") },
-  p3: { key: "hero.p3", value: t("hero.p3") },
+  title: "Full Stack Engineer",
+  p1: "building performant web applications and developer tools.",
+  p2: "I care about clean code, fast load times, and thoughtful UX.",
+  p3: "When not coding, you'll find me contributing to open source, writing about web performance, or exploring new frameworks.",
 };
 
 const projects = [
   {
-    nameKey: "projects.item_1.name",
-    descriptionKey: "projects.item_1.description",
-    name: t("projects.item_1.name"),
-    description: t("projects.item_1.description"),
-    link: t("projects.item_1.link"),
+    name: "hybrid-astro-ui",
+    description: "UI elements for Astro using a hybrid model: zero-JS Astro + progressive enhancement with web components.",
+    link: "https://github.com/JorgeRosbel/hybrid-astro-ui"
   },
   {
-    nameKey: "projects.item_2.name",
-    descriptionKey: "projects.item_2.description",
-    name: t("projects.item_2.name"),
-    description: t("projects.item_2.description"),
-    link: t("projects.item_2.link"),
+    name: "http-sentinel",
+    description: "A TypeScript library that provides a comprehensive set of HTTP error classes and utilities for handling HTTP errors.",
+    link: "https://github.com/JorgeRosbel/http-sentinel"
   },
   {
-    nameKey: "projects.item_3.name",
-    descriptionKey: "projects.item_3.description",
-    name: t("projects.item_3.name"),
-    description: t("projects.item_3.description"),
-    link: t("projects.item_3.link"),
+    name: "gitzen",
+    description: "AI-powered CLI tool for automatic git commit message generation.",
+    link: "https://github.com/JorgeRosbel/gitzen"
   },
   {
-    nameKey: "projects.item_4.name",
-    descriptionKey: "projects.item_4.description",
-    name: t("projects.item_4.name"),
-    description: t("projects.item_4.description"),
-    link: t("projects.item_4.link"),
+    name: "NovaBoost",
+    description: "Free Astro 5 & TailwindCSS blog template—SEO-optimized, with JSON-LD and optional AI post generation.",
+    link: "https://github.com/JorgeRosbel/NovaBoost"
   },
   {
-    nameKey: "projects.item_5.name",
-    descriptionKey: "projects.item_5.description",
-    name: t("projects.item_5.name"),
-    description: t("projects.item_5.description"),
-    link: t("projects.item_5.link"),
+    name: "astro-i18n",
+    description: "Simple internationalization (i18n) library for Astro with TypeScript support.",
+    link: "https://github.com/JorgeRosbel/astro-i18n"
   },
   {
-    nameKey: "projects.item_6.name",
-    descriptionKey: "projects.item_6.description",
-    name: t("projects.item_6.name"),
-    description: t("projects.item_6.description"),
-    link: t("projects.item_6.link"),
+    name: "astro-collections",
+    description: "A collection utilities library for Astro framework, providing easy collection management components.",
+    link: "https://github.com/JorgeRosbel/astro-collections"
   },
   {
-    nameKey: "projects.item_7.name",
-    descriptionKey: "projects.item_7.description",
-    name: t("projects.item_7.name"),
-    description: t("projects.item_7.description"),
-    link: t("projects.item_7.link"),
+    name: "Geofisik Tool",
+    description: "Geophysical web application to monitor vertical displacements in structures with interactive maps and time-series charts.",
+    link: "https://tool.geofisik.com/"
   },
   {
-    nameKey: "projects.item_8.name",
-    descriptionKey: "projects.item_8.description",
-    name: t("projects.item_8.name"),
-    description: t("projects.item_8.description"),
-    link: t("projects.item_8.link"),
+    name: "EmoteShowcase",
+    description: "Web app for dynamic resizing and visualization of emotes with live previews and optimized export for streaming.",
+    link: "https://emoteshowcase.com/"
   },
 ];
 
 const projectsProps = {
-  title: { key: "projects.title", value: t("projects.title") },
+  title: { key: "projects.title", value: "Projects" },
   projects,
 };
 
 const experienceData = {
-  title: {
-    key: "experience.title",
-    value: t("experience.title"),
-  },
+  title: { key: "experience.title", value: "Experience" },
   jobs: [
     {
-      period: {
-        key: "experience.item_1.period",
-        value: t("experience.item_1.period"),
-      },
-      role: {
-        key: "experience.item_1.role",
-        value: t("experience.item_1.role"),
-      },
-      company: {
-        key: "experience.item_1.company",
-        value: t("experience.item_1.company"),
-      },
-      description: {
-        key: "experience.item_1.description",
-        value: t("experience.item_1.description"),
-      },
+      period: { key: "experience.item_1.period", value: "2024 — now" },
+      role: { key: "experience.item_1.role", value: "Senior Engineer" },
+      company: { key: "experience.item_1.company", value: "Vercel" },
+      description: { key: "experience.item_1.description", value: "Building the frontend cloud. Working on the dashboard, deployment infrastructure, and developer experience." }
     },
     {
-      period: {
-        key: "experience.item_2.period",
-        value: t("experience.item_2.period"),
-      },
-      role: {
-        key: "experience.item_2.role",
-        value: t("experience.item_2.role"),
-      },
-      company: {
-        key: "experience.item_2.company",
-        value: t("experience.item_2.company"),
-      },
-      description: {
-        key: "experience.item_2.description",
-        value: t("experience.item_2.description"),
-      },
+      period: { key: "experience.item_2.period", value: "2022 — 2024" },
+      role: { key: "experience.item_2.role", value: "Software Engineer" },
+      company: { key: "experience.item_2.company", value: "Linear" },
+      description: { key: "experience.item_2.description", value: "Shipped real-time sync, keyboard-first interactions, and performance optimizations." }
     },
     {
-      period: {
-        key: "experience.item_3.period",
-        value: t("experience.item_3.period"),
-      },
-      role: {
-        key: "experience.item_3.role",
-        value: t("experience.item_3.role"),
-      },
-      company: {
-        key: "experience.item_3.company",
-        value: t("experience.item_3.company"),
-      },
-      description: {
-        key: "experience.item_3.description",
-        value: t("experience.item_3.description"),
-      },
+      period: { key: "experience.item_3.period", value: "2020 — 2022" },
+      role: { key: "experience.item_3.role", value: "Full Stack Developer" },
+      company: { key: "experience.item_3.company", value: "Stripe" },
+      description: { key: "experience.item_3.description", value: "Designed payment flows and merchant dashboards. Led the migration to React 18 and improved CI/CD pipelines." }
     },
     {
-      period: {
-        key: "experience.item_4.period",
-        value: t("experience.item_4.period"),
-      },
-      role: {
-        key: "experience.item_4.role",
-        value: t("experience.item_4.role"),
-      },
-      company: {
-        key: "experience.item_4.company",
-        value: t("experience.item_4.company"),
-      },
-      description: {
-        key: "experience.item_4.description",
-        value: t("experience.item_4.description"),
-      },
+      period: { key: "experience.item_4.period", value: "2018 — 2020" },
+      role: { key: "experience.item_4.role", value: "Frontend Engineer" },
+      company: { key: "experience.item_4.company", value: "Early Startup" },
+      description: { key: "experience.item_4.description", value: "First engineering hire. Built the core product from scratch using Next.js and Tailwind CSS." }
     },
   ],
 };
 
 const footerContent = {
-  id: t("nav.contact").toLowerCase(),
-  status: {
-    key: "contact.status",
-    value: t("contact.status"),
-  },
-  email_label: {
-    key: "contact.email_label",
-    value: t("contact.email_label"),
-  },
-  email_url: {
-    key: "contact.email_url",
-    value: t("contact.email_url"),
-  },
-  github_label: {
-    key: "contact.github_label",
-    value: t("contact.github_label"),
-  },
-  github_url: {
-    key: "contact.github_url",
-    value: t("contact.github_url"),
-  },
-  x_label: {
-    key: "contact.x_label",
-    value: t("contact.x_label"),
-  },
-  x_url: {
-    key: "contact.x_url",
-    value: t("contact.x_url"),
-  },
-  linkedin_label: {
-    key: "contact.linkedin_label",
-    value: t("contact.linkedin_label"),
-  },
-  linkedin_url: {
-    key: "contact.linkedin_url",
-    value: t("contact.linkedin_url"),
-  },
+  id: "contact",
+  status: "Available for freelance",
+  email_label: "Email",
+  email_url: "mailto:hi@anson.im",
+  github_label: "GitHub",
+  github_url: "https://github.com/anson-im",
+  x_label: "X",
+  x_url: "https://x.com/anson_im",
+  linkedin_label: "Linkedin",
+  linkedin_url: "https://linkedin.com/in/anson-im",
 };
 
 const skills = [
   {
-    title: { key: "skills.react.title", value: t("skills.react.title") },
-    category: { key: "skills.react.category", value: t("skills.react.category") },
-    description: { key: "skills.react.description", value: t("skills.react.description") },
-    experience_years: { key: "skills.react.experience_years", value: t("skills.react.experience_years") },
-    experience_label: { key: "skills.react.experience_label", value: t("skills.react.experience_label") },
+    title: { value: "React" },
+    category: { value: "Lib" },
+    description: { value: "UI Components, Hooks, State Management" },
+    experience_years: { value: "4" },
+    experience_label: { value: "years of experience" }
   },
   {
-    title: { key: "skills.typescript.title", value: t("skills.typescript.title") },
-    category: { key: "skills.typescript.category", value: t("skills.typescript.category") },
-    description: { key: "skills.typescript.description", value: t("skills.typescript.description") },
-    experience_years: { key: "skills.typescript.experience_years", value: t("skills.typescript.experience_years") },
-    experience_label: { key: "skills.typescript.experience_label", value: t("skills.typescript.experience_label") },
+    title: { value: "TypeScript" },
+    category: { value: "Language" },
+    description: { value: "Static Typing, Generics, Interfaces" },
+    experience_years: { value: "3" },
+    experience_label: { value: "years of experience" }
   },
   {
-    title: { key: "skills.astro.title", value: t("skills.astro.title") },
-    category: { key: "skills.astro.category", value: t("skills.astro.category") },
-    description: { key: "skills.astro.description", value: t("skills.astro.description") },
-    experience_years: { key: "skills.astro.experience_years", value: t("skills.astro.experience_years") },
-    experience_label: { key: "skills.astro.experience_label", value: t("skills.astro.experience_label") },
+    title: { value: "Astro" },
+    category: { value: "Framework" },
+    description: { value: "Island Architecture, Static Site Generation" },
+    experience_years: { value: "2" },
+    experience_label: { value: "years of experience" }
   },
   {
-    title: { key: "skills.tailwind.title", value: t("skills.tailwind.title") },
-    category: { key: "skills.tailwind.category", value: t("skills.tailwind.category") },
-    description: { key: "skills.tailwind.description", value: t("skills.tailwind.description") },
-    experience_years: { key: "skills.tailwind.experience_years", value: t("skills.tailwind.experience_years") },
-    experience_label: { key: "skills.tailwind.experience_label", value: t("skills.tailwind.experience_label") },
+    title: { value: "Tailwind CSS" },
+    category: { value: "Design" },
+    description: { value: "Utility-First CSS, Responsive Design" },
+    experience_years: { value: "4" },
+    experience_label: { value: "years of experience" }
   },
   {
-    title: { key: "skills.nodejs.title", value: t("skills.nodejs.title") },
-    category: { key: "skills.nodejs.category", value: t("skills.nodejs.category") },
-    description: { key: "skills.nodejs.description", value: t("skills.nodejs.description") },
-    experience_years: { key: "skills.nodejs.experience_years", value: t("skills.nodejs.experience_years") },
-    experience_label: { key: "skills.nodejs.experience_label", value: t("skills.nodejs.experience_label") },
+    title: { value: "Node.js" },
+    category: { value: "Backend" },
+    description: { value: "REST APIs, Express, Authentication" },
+    experience_years: { value: "3" },
+    experience_label: { value: "years of experience" }
   },
   {
-    title: { key: "skills.kali_linux.title", value: t("skills.kali_linux.title") },
-    category: { key: "skills.kali_linux.category", value: t("skills.kali_linux.category") },
-    description: { key: "skills.kali_linux.description", value: t("skills.kali_linux.description") },
-    experience_years: { key: "skills.kali_linux.experience_years", value: t("skills.kali_linux.experience_years") },
-    experience_label: { key: "skills.kali_linux.experience_label", value: t("skills.kali_linux.experience_label") },
+    title: { value: "Kali Linux" },
+    category: { value: "Security" },
+    description: { value: "Pentesting, SQL Injection, Network Auditing" },
+    experience_years: { value: "1" },
+    experience_label: { value: "year of experience" }
   }
 ];
 ---
 
 <Layout
   locale="en"
-  title="Void"
-  description={t("description")}
-  alternateLinks={[
-    { href: "/en", hreflang: "en" },
-    { href: "/zh", hreflang: "zh" },
-  ]}
+  title="Anson - Full Stack Engineer"
+  description="Full Stack Engineer building performant web applications and developer tools."
 >
-  <Header nav={nav} locales={["en", "zh"]} currentLocale="en" />
+  <Header nav={nav} locales={["en"]} currentLocale="en" />
 
   <main>
     <Hero {...heroProps} />
     <Projects {...projectsProps} />
     <Experience {...experienceData} />
-    <Skills heading={{key: "skills.heading", value: t("skills.heading")}} content={skills} />
+    <Skills heading={{value: "Skills"}} content={skills} />
   </main>
 
   <Footer {...footerContent} />

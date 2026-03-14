@@ -5,12 +5,11 @@ import OGImage from "@/src/assets/background.png"
 interface Props {
 	title: string;
 	description: string;
-	locale: string;
+	locale?: string;
 	alternateLinks?: { href: string; hreflang: string }[];
 }
 
-const { title, description, locale, alternateLinks } =
-	Astro.props as Props;
+const { title, description, locale = "en", alternateLinks } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,11 +22,11 @@ const { title, description, locale, alternateLinks } =
 			image={OGImage}
 			enableClientRouter
 			ogType="website"
-			favicons={[  { rel: "icon", type: "image/png", href: "/icon.png", sizes: "32x32" },]}
+			favicons={[{ rel: "icon", type: "image/png", href: "/icon.png", sizes: "32x32" }]}
 			alternateLinks={alternateLinks}
 		/>
 	</head>
-	<body class="*:max-w-2xl *:w-full flex flex-col  items-center w-full font-mono px-5 md:px-0 leading-7" >
+	<body class="*:max-w-2xl *:w-full flex flex-col items-center w-full font-mono px-5 md:px-0 leading-7">
 		<slot />
 	</body>
 </html>

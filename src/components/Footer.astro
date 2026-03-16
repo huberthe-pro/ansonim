@@ -10,11 +10,9 @@ interface Props {
     github_url?: string | Option;
     x_label?: string | Option;
     x_url?: string | Option;
-    linkedin_label?: string | Option;
-    linkedin_url?: string | Option;
 }
 
-const { status, email_label, email_url, github_label, github_url, x_label, x_url, linkedin_label, linkedin_url, id } = Astro.props as Props
+const { status, email_label, email_url, github_label, github_url, x_label, x_url, id } = Astro.props as Props
 
 const statusValue = typeof status === 'string' ? status : status.value;
 const emailUrlValue = typeof email_url === 'string' ? email_url : email_url?.value;
@@ -23,8 +21,6 @@ const githubUrlValue = typeof github_url === 'string' ? github_url : github_url?
 const githubLabelValue = typeof github_label === 'string' ? github_label : github_label?.value;
 const xUrlValue = typeof x_url === 'string' ? x_url : x_url?.value;
 const xLabelValue = typeof x_label === 'string' ? x_label : x_label?.value;
-const linkedinUrlValue = typeof linkedin_url === 'string' ? linkedin_url : linkedin_url?.value;
-const linkedinLabelValue = typeof linkedin_label === 'string' ? linkedin_label : linkedin_label?.value;
 ---
 
 <footer
@@ -68,21 +64,13 @@ const linkedinLabelValue = typeof linkedin_label === 'string' ? linkedin_label :
                     </div>
                 )}
 
-                {linkedinUrlValue && linkedinLabelValue && (
-                    <div class="flex gap-2">
-                        <span class="text-green-500/60">LINKEDIN:</span>
-                        <a href={linkedinUrlValue} rel="nofollow" class="text-cyan-500 hover:text-green-500 hover:underline">
-                            {linkedinLabelValue}
-                        </a>
-                    </div>
-                )}
             </div>
         </div>
 
         <pre class="text-green-500/30 text-center">
-────────────────────────────────────
-© 2025 anson.im | v1.0.0 | build: {new Date().toISOString().slice(0, 10)}
-────────────────────────────────────
+─────────────────────────────────────────
+© 2026 Made with ❤️ by Anson | v0.10.13 |
+─────────────────────────────────────────
         </pre>
     </div>
 </footer>

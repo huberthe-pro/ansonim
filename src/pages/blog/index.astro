@@ -2,6 +2,7 @@
 import Layout from "@/src/layouts/Layout.astro";
 import Header from "@/src/components/Header.astro";
 import Footer from "@/src/components/Footer.astro";
+import { footerConfig } from "@/src/lib/site-config";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
@@ -12,18 +13,7 @@ const nav = [
   { path: `#contact`, text: "contact" },
 ];
 
-const footerContent = {
-  id: "contact",
-  status: "[online] available for freelance",
-  email_label: "email:",
-  email_url: "mailto:hi@anson.im",
-  github_label: "github",
-  github_url: "https://github.com/anson-im",
-  x_label: "twitter",
-  x_url: "https://x.com/anson_im",
-  linkedin_label: "linkedin",
-  linkedin_url: "https://linkedin.com/in/anson-im",
-};
+const footerContent = footerConfig;
 ---
 
 <Layout

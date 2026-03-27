@@ -1,5 +1,5 @@
 {
-  "description": "全栈工程师，专注于构建高性能 Web 应用和开发者工具",
+  "description": "Agentic Coding 工程师，正在构建 AgentsMail — 为 AI 智能体提供免费加密邮件服务。",
   "nav": {
     "about": "关于",
     "blog": "博客",
@@ -8,135 +8,102 @@
     "contact": "联系"
   },
   "hero": {
-    "title": "全栈工程师",
-    "p1": "专注于构建高性能 Web 应用和开发者工具",
-    "p2": "曾在初创公司负责产品开发。注重代码质量、快速加载和精心设计的用户体验。",
-    "p3": "不写代码时，你会看到我在参与开源、撰写关于 Web 性能的文章或探索新框架。"
+    "title": "Agentic Coding 工程师",
+    "p1": "从 Google Glass OS 到服务 5 亿+用户的应用，现在构建 AI 智能体的邮件基础设施。",
+    "p2": "我用 AI 智能体交付产品。目前正在构建 AgentsMail — 为每个 AI 智能体提供免费加密邮件。",
+    "p3": ""
   },
   "projects": {
     "title": "项目",
     "item_1": {
-      "name": "hybrid-astro-ui",
-      "description": "Astro 的 UI 组件库，采用混合模式：零 JS 的 Astro + 渐进式增强的 Web 组件。",
-      "link": "https://github.com/JorgeRosbel/hybrid-astro-ui"
+      "name": "AgentsMail",
+      "description": "AI 智能体的免费邮件服务。一个 API 调用即可获得邮箱并开始发送。加密、零摩擦、开源。",
+      "link": "https://agentsmail.org"
     },
     "item_2": {
-      "name": "http-sentinel",
-      "description": "TypeScript 库，提供全面的 HTTP 错误类和工具来处理 HTTP 错误。",
-      "link": "https://github.com/JorgeRosbel/http-sentinel"
+      "name": "agents-mail（开源）",
+      "description": "驱动 AgentsMail 的开源后端。Cloudflare Workers + D1，面向操作的 API，信任层级系统。",
+      "link": "https://github.com/huberthe-pro/agents-mail"
     },
     "item_3": {
-      "name": "gitzen",
-      "description": "AI 驱动的 CLI 工具，用于自动生成 Git 提交信息。",
-      "link": "https://github.com/JorgeRosbel/gitzen"
-    },
-    "item_4": {
-      "name": "NovaBoost",
-      "description": "免费的 Astro 5 和 TailwindCSS 博客模板——SEO 优化，包含 JSON-LD 和可选的 AI 文章生成。",
-      "link": "https://github.com/JorgeRosbel/NovaBoost"
-    },
-    "item_5": {
-      "name": "astro-i18n",
-      "description": "Astro 的简单国际化 (i18n) 库，支持 TypeScript。",
-      "link": "https://github.com/JorgeRosbel/astro-i18n"
-    },
-    "item_6": {
-      "name": "astro-collections",
-      "description": "Astro 框架的集合工具库，提供简单的集合管理组件。",
-      "link": "https://github.com/JorgeRosbel/astro-collections"
-    },
-    "item_7": {
-      "name": "Geofisik Tool",
-      "description": "地球物理 Web 应用程序，通过交互式地图和时间序列图表监测结构的垂直位移。",
-      "link": "https://tool.geofisik.com/"
-    },
-    "item_8": {
-      "name": "EmoteShowcase",
-      "description": "用于表情符号动态调整和可视化的 Web 应用，具有实时预览和针对流媒体优化的导出功能。",
-      "link": "https://emoteshowcase.com/"
+      "name": "AgentsMail ClawHub 技能",
+      "description": "安装此技能，你的 AI 智能体几秒内即可获得自己的邮箱。ClawHub 上 40+ 安装量。",
+      "link": "https://clawhub.ai/huberthe-pro/agentsmail"
     }
   },
   "experience": {
     "title": "经历",
     "item_1": {
-      "period": "2024 — 至今",
-      "role": "高级工程师",
-      "company": "Vercel",
-      "description": "构建前端云平台。致力于仪表板、部署基础设施和开发者体验。"
+      "period": "2025 — 至今",
+      "role": "创始人 & Agentic Coding 工程师",
+      "company": "AgentsMail",
+      "description": "构建 AI 智能体的邮件基础设施。开源、免费、加密。Cloudflare Workers + D1。"
     },
     "item_2": {
-      "period": "2022 — 2024",
-      "role": "软件工程师",
-      "company": "Linear",
-      "description": "负责实时同步、键盘优先交互和性能优化。"
+      "period": "此前",
+      "role": "Google Glass OS 开发者",
+      "company": "Google",
+      "description": "为 Google Glass 平台开发，开拓可穿戴计算体验。"
     },
     "item_3": {
-      "period": "2020 — 2022",
-      "role": "全栈开发者",
-      "company": "Stripe",
-      "description": "设计支付流程和商户仪表板。主导迁移到 React 18 并改进 CI/CD 流程。"
-    },
-    "item_4": {
-      "period": "2018 — 2020",
-      "role": "前端工程师",
-      "company": "早期初创公司",
-      "description": "首位工程师。使用 Next.js 和 Tailwind CSS 从零开始构建核心产品。"
+      "period": "此前",
+      "role": "产品与工程负责人",
+      "company": "多家公司",
+      "description": "策划并开发了数十款应用和小程序，服务超过 5 亿用户。"
     }
   },
   "skills": {
     "heading": "技能",
-    "react": {
-      "title": "React",
-      "category": "库",
-      "description": "UI 组件、Hooks、状态管理",
-      "experience_years": "4",
+    "agentic_dev": {
+      "title": "Agentic 开发",
+      "category": "AI",
+      "description": "Claude Code、OpenClaw、多智能体编排",
+      "experience_years": "2",
       "experience_label": "年经验"
     },
     "typescript": {
       "title": "TypeScript",
       "category": "语言",
-      "description": "静态类型、泛型、接口",
-      "experience_years": "3",
+      "description": "Cloudflare Workers、边缘计算、API 设计",
+      "experience_years": "5",
       "experience_label": "年经验"
     },
-    "astro": {
-      "title": "Astro",
-      "category": "框架",
-      "description": "岛屿架构、静态站点生成",
-      "experience_years": "2",
+    "product": {
+      "title": "产品工程",
+      "category": "产品",
+      "description": "0→1 产品设计、应用 & 小程序、5 亿+用户",
+      "experience_years": "10+",
       "experience_label": "年经验"
     },
-    "tailwind": {
-      "title": "Tailwind CSS",
-      "category": "设计",
-      "description": "实用优先 CSS、响应式设计",
-      "experience_years": "4",
+    "frontend": {
+      "title": "Next.js & React",
+      "category": "前端",
+      "description": "App Router、Server Components、Tailwind、shadcn/ui",
+      "experience_years": "5",
       "experience_label": "年经验"
     },
-    "nodejs": {
-      "title": "Node.js",
-      "category": "后端",
-      "description": "REST API、Express、身份验证",
-      "experience_years": "3",
+    "cloud": {
+      "title": "云基础设施",
+      "category": "运维",
+      "description": "Cloudflare Workers、D1、Vercel、邮件路由",
+      "experience_years": "5",
       "experience_label": "年经验"
     },
-    "kali_linux": {
-      "title": "Kali Linux",
+    "security": {
+      "title": "邮件与安全",
       "category": "安全",
-      "description": "渗透测试、SQL 注入、网络审计",
-      "experience_years": "1",
+      "description": "DKIM/SPF/DMARC、AES-256-GCM、HMAC-SHA256、信任系统",
+      "experience_years": "3",
       "experience_label": "年经验"
     }
   },
   "contact": {
-    "status": "接受兼职",
-    "email_label": "邮箱",
-    "email_url": "mailto:hi@anson.im",
-    "github_label": "GitHub",
-    "github_url": "https://github.com/anson-im",
-    "x_label": "X",
-    "x_url": "https://x.com/anson_im",
-    "linkedin_label": "领英",
-    "linkedin_url": "https://linkedin.com/in/anson-im"
+    "status": "[在线] 正在构建 AgentsMail",
+    "email_label": "beacharsiu@gmail.com",
+    "email_url": "mailto:beacharsiu@gmail.com",
+    "github_label": "huberthe-pro",
+    "github_url": "https://github.com/huberthe-pro",
+    "x_label": "@BeACharsiu",
+    "x_url": "https://x.com/BeACharsiu"
   }
 }

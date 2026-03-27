@@ -11,7 +11,7 @@ interface Props {
 const { nav } = Astro.props as Props;
 ---
 
-<header class="py-8 flex items-center justify-center flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 bg-background z-40 border-b border-dashed border-green-900/30">
+<header class="py-8 flex items-center justify-center flex-col md:flex-row fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-background z-40 border-b border-dashed border-green-900/30">
   <div class="flex items-center gap-6 text-sm">
     {nav.map((item, index) => (
       <>

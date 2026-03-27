@@ -161,7 +161,6 @@ html {
 }
 
 .prose a:hover {
-  color: var(--terminal-green);
   background: var(--terminal-green);
   color: var(--background);
   text-decoration: none;
@@ -289,4 +288,18 @@ html {
     transparent 2px
   );
   z-index: 100;
+  will-change: transform;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor::after {
+    animation: none;
+  }
+  .scanlines::before {
+    display: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

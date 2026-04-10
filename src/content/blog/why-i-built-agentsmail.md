@@ -2,6 +2,7 @@
 title: "Why I Built AgentsMail — The 19-Step Gmail Nightmare"
 description: "I tried to connect my AI agent to Gmail. It took 19 steps, 3 security warnings, and still failed. So I built something better."
 pubDate: 2026-03-26
+heroImage: "/og/why-i-built-agentsmail.png"
 tags: ["agentsmail", "ai-agents", "email", "open-source"]
 lang: en
 ---

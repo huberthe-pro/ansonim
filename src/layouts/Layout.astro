@@ -1,15 +1,18 @@
 ---
 import { PageMetadata } from "@/src/components/hybrid-astro-ui/page-metadata";
 import OGImage from "@/src/assets/background.png"
+import type { ImageMetadata } from "astro";
 
 interface Props {
 	title: string;
 	description: string;
 	locale?: string;
 	alternateLinks?: { href: string; hreflang: string }[];
+	image?: ImageMetadata | string;
+	ogType?: "website" | "article";
 }
 
-const { title, description, locale = "en", alternateLinks } = Astro.props;
+const { title, description, locale = "en", alternateLinks, image = OGImage, ogType = "website" } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,9 +22,9 @@ const { title, description, locale = "en", alternateLinks } = Astro.props;
 			lang={locale}
 			title={title}
 			description={description}
-			image={OGImage}
+			image={image}
 			enableClientRouter
-			ogType="website"
+			ogType={ogType}
 			favicons={[{ rel: "icon", type: "image/png", href: "/icon.png", sizes: "32x32" }]}
 			alternateLinks={alternateLinks}
 		/>

@@ -11,7 +11,7 @@ type FaviconMimeType = 'image/x-icon' | 'image/png' | 'image/svg+xml' | 'image/g
 interface Props {
   title: string;
   description: string;
-  image: ImageMetadata;
+  image: ImageMetadata | string;
   enableClientRouter: boolean;
   preloadFonts?: { href: string; type: FontMimeType }[];
   loadRSS?: boolean;
@@ -43,6 +43,10 @@ const {
   lang,
   alternateLinks = []
 } = Astro.props as Props;
+
+const imageUrl = typeof image === "string"
+  ? new URL(image, Astro.url)
+  : new URL(image.src, Astro.url);
 ---
 
 <meta charset="utf-8" />
@@ -114,7 +118,7 @@ const {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={imageUrl} />
 
 <meta property="og:locale" content={lang} />
 {
@@ -127,7 +131,7 @@ const {
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta property="twitter:image" content={imageUrl} />
 
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
